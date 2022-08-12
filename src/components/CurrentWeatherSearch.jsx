@@ -6,7 +6,7 @@ import CurrentWeatherInfo from './CurrentWeatherInfo';
 // icon :  http://openweathermap.org/img/wn/{iconcode}@2x.png
 // https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric
 
-const Home = () => {
+const CurrentWeatherSearch = () => {
     const key = "574d8ef8db7452cb9ab658c7af17bd9a"
 
     const [city, setCity] = useState('')
@@ -26,11 +26,11 @@ const Home = () => {
 
                 setLoading(true)
 
-                const res2 = await axios.get(`https://restcountries.com/v2/alpha/${res.data.sys.country}`)
-                if (res2.status === 200) {
-                    setCountry(res2)
+                const resCountry = await axios.get(`https://restcountries.com/v2/alpha/${res.data.sys.country}`)
+                if (resCountry.status === 200) {
+                    setCountry(resCountry)
                     setLoading(false)
-                    console.log(res2)
+                    console.log(resCountry)
                 }
             }
         }
@@ -62,4 +62,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default CurrentWeatherSearch
